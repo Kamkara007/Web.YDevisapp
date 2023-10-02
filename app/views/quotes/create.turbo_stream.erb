@@ -1,0 +1,33 @@
+<%# app/views/quotes/create.turbo_stream.erb %>
+
+<%= turbo_stream.prepend "quotes" do %>
+  <%= render @quote %>
+<% end %>
+
+<%= turbo_stream.update Quote.new, "" %>
+
+<%= turbo_stream.prepend "quotes", @quote %>
+<%= turbo_stream.update Quote.new, "" %>
+
+
+
+
+<%# app/views/quotes/create.turbo_stream.erb %>
+
+<%#= turbo_stream.prepend "quotes", partial: "quotes/quote", locals: { quote: @quote } %>
+<%#= turbo_stream.update Quote.new, "" %>
+<%# While this is a perfectly valid way of writing our view, there is another syntax with a
+ block I sometimes use when lines are too long: %>
+ 
+<%# app/views/quotes/create.turbo_stream.erb %>
+
+<%#= turbo_stream.prepend "quotes" do %>
+  <%#= render partial: "quotes/quote", locals: { quote: @quote } %>
+<%# end %>
+
+<%#= turbo_stream.update Quote.new, "" %>
+
+<%# In Ruby on Rails, the following two expressions are equivalent: %>
+
+<%#=  render partial: "quotes/quote", locals: { quote: @quote } %>
+<%#= render @quote %>
